@@ -162,7 +162,7 @@ export function Hero() {
               <img
                 src={heroPortrait.url}
                 alt="Shri Nidhi, model and actor, in a black shirt against a gold-lit backdrop"
-                className="h-full w-full object-cover animate-breathe will-change-transform"
+                className="aspect-[5/6] w-full object-cover object-[64%_center] animate-breathe will-change-transform"
                 loading="eager"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
