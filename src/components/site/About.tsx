@@ -43,7 +43,7 @@ export function About() {
               <img
                 src={aboutPortrait.url}
                 alt="Shri Nidhi seated on a stool in a black outfit with a gold rim light"
-                className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                className="aspect-[4/5] w-full object-cover object-[18%_center] transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                 loading="lazy"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
