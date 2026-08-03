@@ -49,11 +49,10 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="relative text-sm tracking-[0.18em] text-muted-foreground uppercase transition-colors duration-300 hover:text-foreground"
+              className="group relative text-sm tracking-[0.18em] text-muted-foreground uppercase transition-colors duration-300 hover:text-foreground"
             >
               {l.label}
-              <span className="absolute -bottom-1.5 left-0 h-px w-full origin-right scale-x-0 bg-[image:var(--gradient-gold)] transition-transform duration-400 ease-out hover:origin-left group-hover:scale-x-100 peer-hover:scale-x-100" />
-              <span className="absolute -bottom-1.5 left-0 h-px w-full origin-right scale-x-0 bg-[image:var(--gradient-gold)] transition-transform duration-400 ease-out [a:hover>&]:origin-left [a:hover>&]:scale-x-100" />
+              <span className="absolute -bottom-1.5 left-0 h-px w-full origin-right scale-x-0 bg-[image:var(--gradient-gold)] transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100" />
             </a>
           ))}
         </div>
