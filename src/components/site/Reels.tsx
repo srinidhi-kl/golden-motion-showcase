@@ -5,7 +5,7 @@ import { SectionHeading } from "./SectionHeading";
 
 const reels = [
   {
-    src: "https://images.unsplash.com/photo-1516720262454-a3e9e5a5d1e5?auto=format&fit=crop&w=800&q=80",
+    src: "https://images.unsplash.com/photo-1533162507191-d90c625b2640?auto=format&fit=crop&w=800&q=80",
     title: "Behind The Lens",
     meta: "1.2M views",
   },
