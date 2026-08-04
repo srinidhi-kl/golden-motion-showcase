@@ -1,14 +1,15 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { GoldButton } from "./GoldButton";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Collab", href: "#collab" },
-  { label: "Reels", href: "#reels" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", to: "/about" as const },
+  { label: "Portfolio", to: "/portfolio" as const },
+  { label: "Collab", href: "/#collab" },
+  { label: "Reels", href: "/#reels" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
@@ -35,30 +36,43 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
-        <a href="#top" className="group flex min-w-0 items-center gap-3">
+        <Link to="/" className="group flex min-w-0 items-center gap-3">
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[image:var(--gradient-gold)] font-display text-xl text-primary-foreground transition-transform duration-500 group-hover:rotate-[8deg]">
             SN
           </span>
           <span className="truncate font-display text-xl tracking-[0.24em] uppercase">
             Shri Nidhi
           </span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-9 md:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="group relative text-sm tracking-[0.18em] text-muted-foreground uppercase transition-colors duration-300 hover:text-foreground"
-            >
-              {l.label}
+          {links.map((l) => {
+            const cls =
+              "group relative text-sm tracking-[0.18em] text-muted-foreground uppercase transition-colors duration-300 hover:text-foreground";
+            const underline = (
               <span className="absolute -bottom-1.5 left-0 h-px w-full origin-right scale-x-0 bg-[image:var(--gradient-gold)] transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100" />
-            </a>
-          ))}
+            );
+            return l.to ? (
+              <Link
+                key={l.label}
+                to={l.to}
+                className={cls}
+                activeProps={{ className: `${cls} text-foreground` }}
+              >
+                {l.label}
+                {underline}
+              </Link>
+            ) : (
+              <a key={l.label} href={l.href} className={cls}>
+                {l.label}
+                {underline}
+              </a>
+            );
+          })}
         </div>
 
         <div className="hidden md:block">
-          <GoldButton href="#contact" className="px-6 py-2.5 text-sm">
+          <GoldButton href="/#contact" className="px-6 py-2.5 text-sm">
             Hire Me
           </GoldButton>
         </div>
@@ -79,16 +93,19 @@ export function Navbar() {
         className="overflow-hidden md:hidden"
       >
         <div className="mx-5 mt-4 flex flex-col gap-1 rounded-2xl border border-primary/15 bg-card/90 p-4 backdrop-blur-xl">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 text-sm tracking-[0.18em] uppercase transition-colors hover:bg-primary/10 hover:text-primary"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const cls =
+              "rounded-xl px-4 py-3 text-sm tracking-[0.18em] uppercase transition-colors hover:bg-primary/10 hover:text-primary";
+            return l.to ? (
+              <Link key={l.label} to={l.to} onClick={() => setOpen(false)} className={cls}>
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.label} href={l.href} onClick={() => setOpen(false)} className={cls}>
+                {l.label}
+              </a>
+            );
+          })}
         </div>
       </motion.div>
     </motion.header>
