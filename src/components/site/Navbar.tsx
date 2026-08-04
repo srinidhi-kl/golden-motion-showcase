@@ -7,9 +7,9 @@ import { GoldButton } from "./GoldButton";
 const links = [
   { label: "About", to: "/about" as const },
   { label: "Portfolio", to: "/portfolio" as const },
-  { label: "Collab", href: "/#collab" },
+  { label: "Collab", to: "/collab" as const },
   { label: "Reels", href: "/#reels" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", to: "/contact" as const },
 ];
 
 export function Navbar() {
@@ -72,7 +72,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:block">
-          <GoldButton href="/#contact" className="px-6 py-2.5 text-sm">
+          <GoldButton href="/contact" className="px-6 py-2.5 text-sm">
             Hire Me
           </GoldButton>
         </div>
